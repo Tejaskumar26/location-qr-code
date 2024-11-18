@@ -67,3 +67,34 @@ code {
 .input-field-border:focus-visible {
   outline: none;
 }
+
+.or-divider {
+  position: relative;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ddd;
+}
+
+.or-divider::before {
+  left: 0;
+}
+
+.or-divider::after {
+  right: 0;
+}
+
+.or-divider span {
+  background: #fff;
+  padding: 0 10px;
+  color: #888;
+  font-weight: bold;
+}
