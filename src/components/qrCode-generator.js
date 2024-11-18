@@ -4,7 +4,7 @@ import { jsPDF } from "jspdf";
 
 const QRCodeGenerator = () => {
     const [latitude, setLatitude] = useState("");
-    const [longitude, setLongitude] = useState(false);
+    const [longitude, setLongitude] = useState("");
 
     const [generated, setGenerated] = useState(false);
 
@@ -43,27 +43,27 @@ const QRCodeGenerator = () => {
                         <div className="card-header bg-primary text-white text-center">
                             <h3>QR Code Generator for Location</h3>
                         </div>
-                        <div className="card-body">
-                            <div className="mb-3">
-                                <label htmlFor="latitude" className="form-label">
+                        <div className="card-body text-start">
+                            <div className="mb-3 d-flex justify-content-between align-items-center">
+                                <label htmlFor="latitude" className="label">
                                     Latitude
                                 </label>
                                 <input
                                     type="text"
-                                    className="form-control"
+                                    className="input-field w-100"
                                     id="latitude"
                                     placeholder="Enter latitude"
                                     value={latitude}
                                     onChange={(e) => setLatitude(e.target.value)}
                                 />
                             </div>
-                            <div className="mb-3">
-                                <label htmlFor="longitude" className="form-label">
+                            <div className="mb-3 d-flex justify-content-between align-items-center">
+                                <label htmlFor="longitude" className="label">
                                     Longitude
                                 </label>
                                 <input
                                     type="text"
-                                    className="form-control"
+                                    className="input-field w-100"
                                     id="longitude"
                                     placeholder="Enter longitude"
                                     value={longitude}

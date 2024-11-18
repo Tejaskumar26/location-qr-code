@@ -1,13 +1,69 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.input-field {
+  border: 1px solid #b0b3c7;
+  border-radius: 7px;
+  margin-top: 0px;
+  font-size: 14px;
+  padding: 7px 10px;
+  background-color: #ffffff;
+  max-width: 450px;
+  width: 100%;
+}
+.input-field::placeholder {
+  color: #b0b3c7;
+}
+.input-field:focus-visible {
+  outline: none;
+}
+
+.invoice-input-field {
+  border: 1px solid #b0b3c7;
+  border-radius: 7px;
+  height: 42px;
+  max-width: 450px;
+  width: 100%;
+}
+.invoice-input-field::placeholder {
+  color: #b0b3c7;
+  font-size: 14px;
+}
+.invoice-input-field:focus-visible {
+  outline: none;
+}
+.input-field-container {
+  border: 1px solid #b0b3c7;
+  border-radius: 7px;
+  height: 42px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.input-field-border {
+  border: none;
+  border-radius: 7px;
+  margin-top: 0px;
+  font-size: 14px;
+  padding: 7px 10px;
+  background-color: #ffffff;
+  max-width: 350px;
+  width: 100%;
+}
+.input-field-border::placeholder {
+  color: #b0b3c7;
+}
+.input-field-border:focus-visible {
+  outline: none;
 }
