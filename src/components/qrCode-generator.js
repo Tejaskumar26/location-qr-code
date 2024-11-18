@@ -31,6 +31,7 @@ const QRCodeGenerator = () => {
             const x = (pageWidth - qrCodeSize) / 2;
             const y = (pageHeight - qrCodeSize) / 4;
             doc.addImage(imgData, "PNG", x, y, qrCodeSize, qrCodeSize);
+            doc.text(locationName, pageWidth / 2, y + qrCodeSize + 20, { align: "center" });
             doc.save("QRCode.pdf");
         }
     };
