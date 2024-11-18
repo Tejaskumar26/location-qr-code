@@ -5,6 +5,8 @@ import { jsPDF } from "jspdf";
 const QRCodeGenerator = () => {
     const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
+    const [locationName, setLocationName] = useState("");
+
 
     const [generated, setGenerated] = useState(false);
 
@@ -44,6 +46,19 @@ const QRCodeGenerator = () => {
                             <h3>QR Code Generator for Location</h3>
                         </div>
                         <div className="card-body text-start">
+                            <div className="mb-3 d-flex justify-content-between align-items-center">
+                                <label htmlFor="name" className="label">
+                                    Location Name
+                                </label>
+                                <input
+                                    type="text"
+                                    className="input-field w-100"
+                                    id="name"
+                                    placeholder="Enter location name"
+                                    value={locationName}
+                                    onChange={(e) => setLocationName(e.target.value)}
+                                />
+                            </div>
                             <div className="mb-3 d-flex justify-content-between align-items-center">
                                 <label htmlFor="latitude" className="label">
                                     Latitude
@@ -85,6 +100,17 @@ const QRCodeGenerator = () => {
                                 <div ref={qrCodeRef}>
                                     <QRCodeCanvas value={googleMapsUrl} size={200} />
                                 </div>
+                                <p className="mt-3">
+                                    <strong>Location Name:</strong>{" "}
+                                    <a
+                                        href={googleMapsUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-primary"
+                                    >
+                                        {locationName}
+                                    </a>
+                                </p>
                                 <p className="mt-3">
                                     <strong>Google Maps URL:</strong>{" "}
                                     <a
