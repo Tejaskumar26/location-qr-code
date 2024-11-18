@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { QRCodeCanvas } from "qrcode.react";
+import { jsPDF } from "jspdf";
 
 const QRCodeGenerator = () => {
     const [latitude, setLatitude] = useState("");
-    const [longitude, setLongitude] = useState("");
+    const [longitude, setLongitude] = useState(false);
+
     const [generated, setGenerated] = useState(false);
+
+    const qrCodeRef = useRef();
 
     const handleGenerateQRCode = () => {
         if (latitude && longitude) {
             setGenerated(true);
         } else {
             alert("Please enter valid location details!");
+        }
+    };
+
+    const handleDownloadQRCodePDF = () => {
+        if (qrCodeRef.current) {
+            const doc = new jsPDF("p", "mm", "a4");
+            const qrCodeSize = 100;
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const canvas = qrCodeRef.current.querySelector("canvas");
+            const imgData = canvas.toDataURL("image/png");
+            const x = (pageWidth - qrCodeSize) / 2;
+            const y = (pageHeight - qrCodeSize) / 4;
+            doc.addImage(imgData, "PNG", x, y, qrCodeSize, qrCodeSize);
+            doc.save("QRCode.pdf");
         }
     };
 
@@ -63,7 +82,9 @@ const QRCodeGenerator = () => {
                         {generated && (
                             <div className="card-footer text-center">
                                 <h5>QR Code</h5>
-                                <QRCodeCanvas value={googleMapsUrl} size={200} />
+                                <div ref={qrCodeRef}>
+                                    <QRCodeCanvas value={googleMapsUrl} size={200} />
+                                </div>
                                 <p className="mt-3">
                                     <strong>Google Maps URL:</strong>{" "}
                                     <a
@@ -75,6 +96,12 @@ const QRCodeGenerator = () => {
                                         {googleMapsUrl}
                                     </a>
                                 </p>
+                                <button
+                                    className="btn btn-primary mt-3"
+                                    onClick={handleDownloadQRCodePDF}
+                                >
+                                    Download
+                                </button>
                             </div>
                         )}
                     </div>
